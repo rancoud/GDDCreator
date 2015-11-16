@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active">
+              <a href="#" data-id-part="project">Project</a>
+            </li>
+            <li>
+              <a href="#" data-id-part="overview">Overview</a>
+            </li>
+            <li>
+              <a href="#" data-id-part="reports">Reports</a>
+            </li>
+            <li>
+              <a href="#" data-id-part="analytics">Analytics</a>
+            </li>
+            <li>
+              <a href="#" data-id-part="export">Export</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div id="project">
+            <h1>Project</h1>
+            <div id="project-form"></div>
+          </div>
+          <div id="overview">
+            <h1>Overview</h1>
+            <div id="overview-form"></div>
+          </div>
+          <div id="reports">
+            <h1>RTY</h1>
+            <div id="aze-form"></div>
+          </div>
+          <div id="analytics">
+            <h1>QSD</h1>
+            <div id="aze-form"></div>
+          </div>
+          <div id="export">
+            <h1>POI</h1>
+            <button id="export-json" class="btn btn-primary">Export JSON</button>
+            <button id="export-markdown" class="btn btn-primary">Export Markdown</button>
+            <button id="export-pastebin" class="btn btn-primary">Send to pastebin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap_form_generator.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
