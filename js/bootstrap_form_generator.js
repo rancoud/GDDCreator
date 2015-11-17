@@ -78,6 +78,7 @@ var form = [
   }
 
   BootstrapFormGenerator.prototype.generate = function (json) {
+    this.json = json;
     var tempRender = [];
     for (var i = 0, max = json.length; i < max; i++) {
       tempRender.push(this.transform(json[i]));
@@ -93,7 +94,12 @@ var form = [
     var id = generateId(obj.name);
     var root = createEl({type:'div', class:"form-group"});
     var label = createEl({type:'label', class:"form-group", textNode: obj.name, attr:{for:id}});
-    var input = createEl({type:element,id:id, class:"form-control", attr:{placeholder: obj.placeholder, type:obj.type}});
+    if(element === "textarea") {
+      var input = createEl({type:element, id:id, class:"form-control", textNode: obj.value, attr:{placeholder: obj.placeholder, type:obj.type}});
+    }
+    else {
+      var input = createEl({type:element, id:id, class:"form-control", attr:{placeholder: obj.placeholder, type:obj.type, value: obj.value}});
+    }
     var help = createEl({type:'span', class:'help-block', textNode: obj.help});
 
     root.appendChild(label);
@@ -104,9 +110,56 @@ var form = [
   };
 
   BootstrapFormGenerator.prototype.export = function () {
-    //
+    var json = this.json;
+    return JSON.stringify(json);
+  };
+
+  BootstrapFormGenerator.prototype.import = function (json) {
+    this.anchor.innerHTML = "";
+    this.generate(json);
   };
 
   window.BootstrapFormGenerator = BootstrapFormGenerator;
+
+  function MetaBootstrapFormGenerator(json) {
+    this.refsBootstrapFormGenerator = {};
+
+    for (var id in json) {
+      if (json.hasOwnProperty(id)) {
+        var bfg = new BootstrapFormGenerator(id);
+        bfg.generate(json[id]);
+        this.refsBootstrapFormGenerator[id] = bfg;
+      }
+    }
+
+    return this;
+  };
+
+  MetaBootstrapFormGenerator.prototype.export = function () {
+    var json = '';
+
+    for (var id in this.refsBootstrapFormGenerator) {
+      if (this.refsBootstrapFormGenerator.hasOwnProperty(id)) {
+        json+= '"' + id + '" : ' + this.refsBootstrapFormGenerator[id].export() + ',';
+      }
+    }
+
+    if(json.charAt(json.length-1) === ',') {
+      json = json.substr(0, json.length-1);
+    }
+    json = '{' + json + '}';
+
+    return json;
+  };
+
+  MetaBootstrapFormGenerator.prototype.import = function (json) {
+    for (var id in this.refsBootstrapFormGenerator) {
+      if (this.refsBootstrapFormGenerator.hasOwnProperty(id)) {
+        this.refsBootstrapFormGenerator[id].import(json[id]);
+      }
+    }
+  };
+
+  window.MetaBootstrapFormGenerator = MetaBootstrapFormGenerator;
 
 })();

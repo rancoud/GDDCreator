@@ -20,13 +20,7 @@
               <a href="#" data-id-part="overview">Overview</a>
             </li>
             <li>
-              <a href="#" data-id-part="reports">Reports</a>
-            </li>
-            <li>
-              <a href="#" data-id-part="analytics">Analytics</a>
-            </li>
-            <li>
-              <a href="#" data-id-part="export">Export</a>
+              <a href="#" data-id-part="export">Export/Import</a>
             </li>
           </ul>
         </div>
@@ -39,19 +33,25 @@
             <h1>Overview</h1>
             <div id="overview-form"></div>
           </div>
-          <div id="reports">
-            <h1>RTY</h1>
-            <div id="aze-form"></div>
-          </div>
-          <div id="analytics">
-            <h1>QSD</h1>
-            <div id="aze-form"></div>
-          </div>
           <div id="export">
-            <h1>POI</h1>
-            <button id="export-json" class="btn btn-primary">Export JSON</button>
-            <button id="export-markdown" class="btn btn-primary">Export Markdown</button>
-            <button id="export-pastebin" class="btn btn-primary">Send to pastebin</button>
+            <h1>Export/Import</h1>
+            <div class="form-group">
+              <label class="form-group" for="export-json-text">Export Json</label>
+              <textarea id="export-json-text" class="form-control" placeholder="" type="textarea"></textarea>
+            </div>
+            <button id="export-json-btn" class="btn btn-primary">Export JSON</button>
+            <hr />
+            <div class="form-group">
+              <label class="form-group" for="export-markdown-text">Export Markdown</label>
+              <textarea id="export-markdown-text" class="form-control" placeholder="" type="textarea"></textarea>
+            </div>
+            <button id="export-markdown-btn" class="btn btn-primary">Export Markdown</button>
+            <hr />
+            <div class="form-group">
+              <label class="form-group" for="import-json-text">Import Json</label>
+              <textarea id="import-json-text" class="form-control" placeholder="" type="textarea"></textarea>
+            </div>
+            <button id="import-json-btn" class="btn btn-primary">Import JSON</button>
           </div>
         </div>
       </div>
@@ -60,6 +60,7 @@
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap_form_generator.js"></script>
+    <script src="js/markdown_generator.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
