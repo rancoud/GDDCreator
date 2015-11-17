@@ -53,9 +53,46 @@ var overviewFormJson = [
   }
 ];
 
+var targetPlatformForm = [
+  {
+    name: "Target Platform",
+    type: "textarea",
+    help: "What platforms are you making this game for, what engine is it in, what are the min specs players need to play this, etc etc?",
+    placeholder: "",
+    value: ""
+  }
+];
+
+var visualStyleForm = [
+  {
+    name: "Visual Style",
+    type: "textarea",
+    help: "Description of the visual style. This section of the game design document is very important when the director is not the visual designer. Even when the same person, this section will be a great inspiration and motivator for the rest of the team, as well as help pitch the idea to any stakeholders. The section should include visual references as well as concept art of locations, sketches etc.",
+    placeholder: "",
+    value: ""
+  }
+];
+
+var audioStyleForm = [
+  {
+    name: "Audio Style",
+    type: "textarea",
+    help: "Describe the Audio style of the game.. \
+    *	Music style and Genre with References\
+    *	Audio Effects style\
+    *	The kind of characters that would have dialogue with references\
+    *	When dialogue or voice work would be used",
+    placeholder: "",
+    value: ""
+  }
+];
+
 var globalFormJson = {
   "project-form" : projectFormJson,
-  "overview-form" : overviewFormJson
+  "overview-form" : overviewFormJson,
+  "target-platform-form" : targetPlatformForm,
+  "visual-style-form" : visualStyleForm,
+  "audio-style-form" : audioStyleForm
 };
 
 var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
@@ -66,7 +103,7 @@ var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
 
     var divToShow = $(this).attr('data-id-part');
     $('.main>div').hide();
-    $('.nav-sidebar>li').removeClass('active');
+    $('.nav-sidebar li').removeClass('active');
     $('#'+divToShow).show();
     $(this).parent().addClass('active');
   });
