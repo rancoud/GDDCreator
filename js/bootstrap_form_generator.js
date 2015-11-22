@@ -109,9 +109,18 @@ var form = [
     return root;
   };
 
-  BootstrapFormGenerator.prototype.export = function () {
+  BootstrapFormGenerator.prototype.export = function (exportInJson) {
     var json = this.json;
-    return JSON.stringify(json);
+
+    for (var i = 0, max = json.length; i < max; i++) {
+      json[i].value = document.getElementById(generateId(json[i].name)).value;
+    }
+
+    if(exportInJson !== undefined && exportInJson === true) {
+      return JSON.stringify(json);
+    }
+
+    return json;
   };
 
   BootstrapFormGenerator.prototype.import = function (json) {
@@ -135,21 +144,36 @@ var form = [
     return this;
   };
 
-  MetaBootstrapFormGenerator.prototype.export = function () {
-    var json = '';
+  MetaBootstrapFormGenerator.prototype.export = function (metaExportInJson) {
+    var jsonString = '';
+    var jsonArray = [];
+    var exportInJson = false;
+
+    if(metaExportInJson !== undefined && metaExportInJson === true) {
+      exportInJson = true;
+    }
 
     for (var id in this.refsBootstrapFormGenerator) {
       if (this.refsBootstrapFormGenerator.hasOwnProperty(id)) {
-        json+= '"' + id + '" : ' + this.refsBootstrapFormGenerator[id].export() + ',';
+        if(exportInJson === true) {
+          jsonString+= '"' + id + '" : ' + this.refsBootstrapFormGenerator[id].export(true) + ',';
+        }
+        else {
+          jsonArray.push({[id] : this.refsBootstrapFormGenerator[id].export()});
+        }
       }
     }
 
-    if(json.charAt(json.length-1) === ',') {
-      json = json.substr(0, json.length-1);
-    }
-    json = '{' + json + '}';
+    if(exportInJson === true) {
+      if(jsonString.charAt(jsonString.length-1) === ',') {
+        jsonString = jsonString.substr(0, jsonString.length-1);
+      }
+      jsonString = '{' + jsonString + '}';
 
-    return json;
+      return jsonString;
+    }
+
+    return jsonArray;
   };
 
   MetaBootstrapFormGenerator.prototype.import = function (json) {

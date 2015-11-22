@@ -624,7 +624,7 @@ var globalFormJson = {
     "game-start-and-intro-form" : gameStartAndIntroForm,
     "in-game-hud-and-menus-form" : inGameHudAndMenusForm,
 
-  "multiplayer" : multiplayerForm,
+  "multiplayer-form" : multiplayerForm,
 
   "ui-form" : uiForm,
     "ui-main-menu-form" : uiMainMenuForm,
@@ -634,8 +634,8 @@ var globalFormJson = {
     "in-game-hud-form" : inGameHudForm,
     "game-over-screen-form" : gameOverScreenForm,
     "level-selection-form" : levelSelectionForm,
-    "level-types-form" : levelTypesForm,
-    "full-level-list-form" : fullLevelListForm,
+      "level-types-form" : levelTypesForm,
+      "full-level-list-form" : fullLevelListForm,
 
   "gameplay-form" : gameplayForm,
     "mechanics-form" : mechanicsForm,
@@ -659,9 +659,190 @@ var globalFormJson = {
     "cinematics-form" : cinematicsForm,
 };
 
+var summaryMarkdown = {
+  "project-form" : {
+    level: 1,
+    title: "Project"
+  },
+
+  "overview-form" : {
+    level: 1,
+    title: "Overview"
+  },
+    "target-platform-form" : {
+      level: 2,
+      title: "Target Platform"
+    },
+    "visual-style-form" : {
+      level: 2,
+      title: "Visual Style"
+    },
+    "audio-style-form" : {
+      level: 2,
+      title: "Audio Style"
+    },
+
+  "starting-out-form" : {
+    level: 1,
+    title: "Starting Out"
+  },
+    "game-start-form" : {
+      level: 2,
+      title: "Game Start"
+    },
+    "main-menu-form" : {
+      level: 2,
+      title: "Main Menu"
+    },
+    "character-selection-form" : {
+      level: 2,
+      title: "Character Selection"
+    },
+    "character-creation-form" : {
+      level: 2,
+      title: "Character Creation"
+    },
+    "game-start-and-intro-form" : {
+      level: 2,
+      title: "Game Start & Intro"
+    },
+    "in-game-hud-and-menus-form" : {
+      level: 2,
+      title: "In-Game HUD & Menus"
+    },
+
+  "multiplayer-form" : {
+    level: 1,
+    title: "Multiplayer"
+  },
+
+  "ui-form" : {
+    level: 1,
+    title: "UI"
+  },
+    "ui-main-menu-form" : {
+      level: 2,
+      title: "Main Menu"
+    },
+    "player-customization-form" : {
+      level: 2,
+      title: "Player Customization"
+    },
+    "game-setup-screen-form" : {
+      level: 2,
+      title: "Game setup Screen"
+    },
+    "in-game-options-menu-form" : {
+      level: 2,
+      title: "In-Game Options Menu"
+    },
+    "in-game-hud-form" : {
+      level: 2,
+      title: "In-Game HUD"
+    },
+    "game-over-screen-form" : {
+      level: 2,
+      title: "Game Over Screen"
+    },
+    "level-selection-form" : {
+      level: 2,
+      title: "Level Selection"
+    },
+      "level-types-form" : {
+        level: 3,
+        title: "Level Types"
+      },
+      "full-level-list-form" : {
+        level: 3,
+        title: "Full Level List"
+      },
+
+  "gameplay-form" : {
+    level: 1,
+    title: "Gameplay"
+  },
+    "mechanics-form" : {
+      level: 2,
+      title: "Mechanics"
+    },
+    "controls-form" : {
+      level: 2,
+      title: "Controls"
+    },
+    "modes-form" : {
+      level: 2,
+      title: "Modes"
+    },
+    "winning-the-match-form" : {
+      level: 2,
+      title: "Winning the match"
+    },
+      "score-form" : {
+        level: 3,
+        title: "Score"
+      },
+      "currency-form" : {
+        level: 3,
+        title: "Currency"
+      },
+    "challenges-of-importance-form" : {
+      level: 2,
+      title: "Challenges of importance"
+    },
+    "missions-form" : {
+      level: 2,
+      title: "Missions"
+    },
+    "achievements-form" : {
+      level: 2,
+      title: "Achievements"
+    },
+
+  "assets-form" : {
+    level: 1,
+    title: "Assets"
+  },
+    "characters-form" : {
+      level: 2,
+      title: "Characters"
+    },
+    "weapons-form" : {
+      level: 2,
+      title: "Weapons"
+    },
+    "equipment-and-upgrades-form" : {
+      level: 2,
+      title: "Equipment and Upgrades"
+    },
+    "environmental-form" : {
+      level: 2,
+      title: "Environmental"
+    },
+    "audio-form" : {
+      level: 2,
+      title: "Audio"
+    },
+
+  "back-story-form" : {
+    level: 1,
+    title: "Back Story"
+  },
+    "cinematics-form" : {
+      level: 2,
+      title: "Cinematics"
+    }
+};
+
 var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
 
 (function($){
+
+  function cleanLinkForMarkdown(string) {
+    string = string.toLowerCase();
+    string = string.split(' ').join('-');
+    return string;
+  }
+
   $('.nav-sidebar a').click(function(event){
     event.preventDefault();
 
@@ -673,7 +854,7 @@ var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
   });
 
   $('#export-json-btn').click(function(){
-    $('#export-json-text').val(globalForm.export());
+    $('#export-json-text').val(globalForm.export(true));
   });
 
   $('#import-json-btn').click(function(){
@@ -681,8 +862,32 @@ var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
   });
 
   $('#export-markdown-btn').click(function(){
+    var mdg = new MarkdownGenerator();
     var json = globalForm.export();
-    var md = '';
+    var key = md = summary = '';
+    var num = 1;
+
+    summary = mdg.title('Summary');
+    for (var i = 0, max = json.length; i < max; i++) {
+      key = Object.keys(json[i]);
+
+      summary = summary + mdg.listOrder(
+                            mdg.link(summaryMarkdown[key].title, '#' + cleanLinkForMarkdown(summaryMarkdown[key].title)),
+                            summaryMarkdown[key].level,
+                            num + '. '
+                          );
+      num++;
+
+      md = md + mdg.title(summaryMarkdown[key].title, summaryMarkdown[key].level, cleanLinkForMarkdown(summaryMarkdown[key].title));
+      for(var j = 0, maxJ = json[i][key].length; j < maxJ; j++) {
+        md = md + mdg.text(json[i][key][j].name);
+        md = md + mdg.text(json[i][key][j].value);
+      }
+    }
+    console.log(json);
+
+    md = summary + '  \n' + md;
+
     $('#export-markdown-text').val(md);
   });
 
