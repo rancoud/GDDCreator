@@ -58,6 +58,7 @@ var form = [
   function generateId(name) {
     name = name.toLowerCase();
     name = name.split(' ').join('_');
+    name = name.split('&').join('and');
     return name
   }
 

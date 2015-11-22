@@ -833,6 +833,192 @@ var summaryMarkdown = {
     }
 };
 
+var sidebarSummary = [
+  {
+    title: "Project",
+    form: "project-form",
+    active: true
+  },
+  {
+    title: "Overview",
+    form: "overview-form",
+    childs: [
+      {
+        title: "Target Platform",
+        form: "target-platform-form"
+      },
+      {
+        title: "Visual Style",
+        form: "visual-style-form"
+      },
+      {
+        title: "Audio Style",
+        form: "audio-style-form"
+      }
+    ]
+  },
+  {
+    title: "Starting Out",
+    form: "starting-out-form",
+    childs: [
+      {
+        title: "Game Start",
+        form: "game-start-form"
+      },
+      {
+        title: "Main Menu",
+        form: "main-menu-form"
+      },
+      {
+        title: "Character Selection",
+        form: "character-selection-form"
+      },
+      {
+        title: "Character Creation",
+        form: "character-creation-form"
+      },
+      {
+        title: "Game Start & Intro",
+        form: "game-start-and-intro-form"
+      },
+      {
+        title: "In-Game HUD & Menus",
+        form: "in-game-hud-and-menus-form"
+      }
+    ]
+  },
+  {
+    title: "Multiplayer",
+    form: "multiplayer-form"
+  },
+  {
+    title: "UI",
+    form: "ui-form",
+    childs: [
+      {
+        title: "Main Menu UI",
+        form: "ui-main-menu-form"
+      },
+      {
+        title: "Player Customization",
+        form: "player-customization-form"
+      },
+      {
+        title: "Game setup Screen",
+        form: "game-setup-screen-form"
+      },
+      {
+        title: "In-Game Options Menu",
+        form: "in-game-options-menu-form"
+      },
+      {
+        title: "In-Game HUD",
+        form: "in-game-hud-form"
+      },
+      {
+        title: "Game Over Screen",
+        form: "game-over-screen-form"
+      },
+      {
+        title: "Level Selection",
+        form: "level-selection-form",
+        childs: [
+          {
+            title: "Level Types",
+            form: "level-types-form"
+          },
+          {
+            title: "Full Level List",
+            form: "full-level-list-form"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Gameplay",
+    form: "gameplay-form",
+    childs: [
+      {
+        title: "Mechanics",
+        form: "mechanics-form"
+      },
+      {
+        title: "Controls",
+        form: "controls-form"
+      },
+      {
+        title: "Modes",
+        form: "modes-form"
+      },
+      {
+        title: "Winning the match",
+        form: "winning-the-match-form",
+        childs: [
+          {
+            title: "Score",
+            form: "score-form"
+          },
+          {
+            title: "Currency",
+            form: "currency-form"
+          }
+        ]
+      },
+      {
+        title: "Challenges of importance",
+        form: "challenges-of-importance-form"
+      },
+      {
+        title: "Missions",
+        form: "missions-form"
+      },
+      {
+        title: "Achievements",
+        form: "achievements-form"
+      }
+    ]
+  },
+  {
+    title: "Assets",
+    form: "assets-form",
+    childs: [
+      {
+        title: "Characters",
+        form: "characters-form"
+      },
+      {
+        title: "Weapons",
+        form: "weapons-form"
+      },
+      {
+        title: "Equipment and Upgrades",
+        form: "equipment-and-upgrades-form"
+      },
+      {
+        title: "Environmental",
+        form: "environmental-form"
+      },
+      {
+        title: "Audio",
+        form: "audio-form"
+      }
+    ]
+  },
+  {
+    title: "Back Story",
+    form: "back-story-form",
+    childs: [
+      {
+        title: "Cinematics",
+        form: "cinematics-form"
+      }
+    ]
+  }
+];
+var sm = new SummaryGenerator('summary-sidebar', 'main-forms');
+sm.generate(sidebarSummary);
+
 var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
 
 (function($){
@@ -862,7 +1048,15 @@ var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
   });
 
   $('#import-json-btn').click(function(){
-    globalForm.import(JSON.parse($('#import-json-text').val()));
+    var jsonString = $('#import-json-text').val();
+    if(jsonString.length > 0) {
+      try {
+        var json = JSON.parse(jsonString);
+        globalForm.import(json);
+      } catch (e) {
+        alert("JSON incorrect");
+      }
+    }
   });
 
   $('#export-markdown-btn').click(function(){
@@ -888,7 +1082,6 @@ var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
         md = md + mdg.text(json[i][key][j].value);
       }
     }
-    console.log(json);
 
     md = summary + '  \n' + md;
 
