@@ -847,6 +847,10 @@ var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
     event.preventDefault();
 
     var divToShow = $(this).attr('data-id-part');
+    if(divToShow === undefined) {
+      return;
+    }
+
     $('.main>div').hide();
     $('.nav-sidebar li').removeClass('active');
     $('#'+divToShow).show();
@@ -890,5 +894,30 @@ var globalForm = new MetaBootstrapFormGenerator(globalFormJson);
 
     $('#export-markdown-text').val(md);
   });
+
+  function restoreFormValues() {
+    oldjson = localStorage.getItem('gddcreator');
+    if(oldjson !== null) {
+      globalForm.import(JSON.parse(oldjson));
+    }
+  }
+
+  function saveFormValue() {
+    localStorage.setItem('gddcreator', globalForm.export(true));
+  }
+
+  restoreFormValues();
+
+  $('input,textarea').keyup(function(e){
+    saveFormValue();
+  });
+
+  $('#btn-delete-localstorage').click(function(e){
+    e.preventDefault();
+    if(confirm('Are you sure you want to delete local storage?')) {
+      localStorage.removeItem('gddcreator');
+    }
+    return false;
+  })
 
 })(jQuery);
