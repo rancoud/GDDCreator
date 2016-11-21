@@ -13,47 +13,52 @@ var form = [
 
   // helpers
   function createEl(params) {
-		var el = null,
-			attribute = undefined,
-			elText;
+    var el = null,
+      attribute = undefined,
+      elText;
 
-		if (typeof params === 'string') {
-			return document.createElement(params);
-		}
+    if (typeof params === 'string') {
+      return document.createElement(params);
+    }
 
-		if (typeof params === 'object') {
-			el = document.createElement(params.type);
-			if (params.id !== undefined) {
-				el.id = params.id;
-			}
-			if (params['class'] !== undefined) {
-				el.className = params['class'];
-			}
-			if (params.width !== undefined) {
-				el.width = params.width;
-			}
-			if (params.height !== undefined) {
-				el.height = params.height;
-			}
-			if (params.attr !== undefined) {
-				for (attribute in params.attr) {
-					if (params.attr.hasOwnProperty(attribute)) {
-						el.setAttribute(attribute, params.attr[attribute]);
-					}
-				}
-			}
-			if (params.textNode !== undefined) {
-				if (params.textNode === null || params.textNode === undefined) {
-					elText = document.createTextNode('');
-				}
-				else {
-					elText = document.createTextNode(params.textNode);
-				}
-				el.appendChild(elText);
-			}
-			return el;
-		}
-	}
+    if (typeof params === 'object') {
+      el = document.createElement(params.type);
+      if (params.id !== undefined) {
+        el.id = params.id;
+      }
+      if (params['class'] !== undefined) {
+        el.className = params['class'];
+      }
+      if (params.width !== undefined) {
+        el.width = params.width;
+      }
+      if (params.height !== undefined) {
+        el.height = params.height;
+      }
+      if (params.attr !== undefined) {
+        for (attribute in params.attr) {
+          if (params.attr.hasOwnProperty(attribute)) {
+            el.setAttribute(attribute, params.attr[attribute]);
+          }
+        }
+      }
+      if (params.textNode !== undefined) {
+        if (params.textNode === null || params.textNode === undefined) {
+          el.appendChild(document.createTextNode(''));
+        }
+        else {
+          var lines = params.textNode.split("\n");
+          for (var i = 0; i < lines.length; i++) {
+            el.appendChild(document.createTextNode(lines[i]));
+            if(i+1 < lines.length) {
+              el.appendChild(document.createElement('br'));
+            }
+          }
+        }
+      }
+      return el;
+    }
+  }
 
   function generateId(name) {
     name = name.toLowerCase();

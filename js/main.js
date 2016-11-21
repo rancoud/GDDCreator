@@ -22,7 +22,7 @@ var projectFormJson = [
   },
   {
     name: "Created At",
-    type: "text",
+    type: "date",
     help: "",
     placeholder: "",
     value: ""
@@ -33,20 +33,20 @@ var overviewFormJson = [
   {
     name: "Overall Gameplay",
     type: "text",
-    help: "1 short sentences about the overall gameplay",
+    help: "1 short sentence about the overall gameplay",
     placeholder: "",
     value: ""
   },
   {
     name: "Storyline",
     type: "textarea",
-    help: "1-2 Paragraphs setting up the storyline or environment of the game.  Describe the first 2 minutes after the player hits the start button",
+    help: "1-2 paragraphs setting up the storyline or environment of the game.\nDescribe the first 2 minutes after the player hits the start button",
     placeholder: "",
     value: ""
   },
   {
     name: "General Gameplay",
-    type: "text",
+    type: "textarea",
     help: "2-3 sentences that sum up the general gameplay, the general visual style and the overall feel of the game.",
     placeholder: "",
     value: ""
@@ -57,7 +57,7 @@ var targetPlatformForm = [
   {
     name: "Target Platform",
     type: "textarea",
-    help: "What platforms are you making this game for, what engine is it in, what are the min specs players need to play this, etc etc?",
+    help: "What platforms are you making this game for?\nWhat engine is it in?\nWhat are the min specs players need to play this, etc?",
     placeholder: "",
     value: ""
   }
@@ -67,7 +67,7 @@ var visualStyleForm = [
   {
     name: "Visual Style",
     type: "textarea",
-    help: "Description of the visual style. This section of the game design document is very important when the director is not the visual designer. Even when the same person, this section will be a great inspiration and motivator for the rest of the team, as well as help pitch the idea to any stakeholders. The section should include visual references as well as concept art of locations, sketches etc.",
+    help: "Description of the visual style.\nThis section of the game design document is very important when the director is not the visual designer.\nEven when the same person, this section will be a great inspiration and motivator for the rest of the team, as well as help pitch the idea to any stakeholders.\nThe section should include visual references as well as concept art of locations, sketches etc.",
     placeholder: "",
     value: ""
   }
@@ -77,11 +77,11 @@ var audioStyleForm = [
   {
     name: "Audio Style",
     type: "textarea",
-    help: "Describe the Audio style of the game.. \
-    *	Music style and Genre with References\
-    *	Audio Effects style\
-    *	The kind of characters that would have dialogue with references\
-    *	When dialogue or voice work would be used",
+    help: "Describe the Audio style of the game: \n\
+    -	Music style and Genre with References\n\
+    -	Audio Effects style\n\
+    -	The kind of characters that would have dialogue with references\n\
+    -	When dialogue or voice work would be used",
     placeholder: "",
     value: ""
   }
@@ -121,7 +121,7 @@ var characterSelectionForm = [
   {
     name: "Character Selection",
     type: "textarea",
-    help: "How is the character selection / creation handled?",
+    help: "How is the character selection/creation handled?",
     placeholder: "",
     value: ""
   }
@@ -131,14 +131,14 @@ var characterCreationForm = [
   {
     name: "Character Selection",
     type: "textarea",
-    help: "How is their character management handled?  How do they outfit their character?  What is the interface like with the store or management screen?",
+    help: "How is their character management handled?\nHow do they outfit their character?\nWhat is the interface like with the store or management screen?",
     placeholder: "",
     value: ""
   },
   {
     name: "Character Stuff",
     type: "textarea",
-    help: "What does the player use to purchase upgrades for his weapon, how is this currency earned? What can be purchased?  Can they sell back?",
+    help: "What does the player use to purchase upgrades for his weapon?\nhow is this currency earned?\nWhat can be purchased?\nCan they sell back?",
     placeholder: "",
     value: ""
   },
@@ -155,14 +155,14 @@ var gameStartAndIntroForm = [
   {
     name: "After select character",
     type: "textarea",
-    help: "After they create and setup their character what do they do?  How do they start the game? How do they choose or find a server?  Are their choices limited in the beginning? Is there a single player option and a multiplayer?",
+    help: "After they create and setup their character what do they do?\nHow do they start the game?\nHow do they choose or find a server?\nAre their choices limited in the beginning?\nIs there a single player option and a multiplayer?",
     placeholder: "",
     value: ""
   },
   {
     name: "Tutorial",
     type: "textarea",
-    help: "Is there some kind of tutorial they go through? Maybe a start mission or a brief little story mode to guide them through the mechanics of the game, introducing them to one mechanic per level, setting up the level so that they need a minimum amount of points to pass and that they have to use a specific mechanic in the level to achieve that.",
+    help: "Is there some kind of tutorial they go through?\nMaybe a start mission or a brief little story mode to guide them through the mechanics of the game\nIntroducing them to one mechanic per level\nSetting up the level so that they need a minimum amount of points to pass and that they have to use a specific mechanic in the level to achieve that.",
     placeholder: "",
     value: ""
   },
@@ -176,7 +176,7 @@ var gameStartAndIntroForm = [
   {
     name: "Start Gaming",
     type: "textarea",
-    help: "General overview of gameplay, how does the level start, what information is displayed to the player before, during and immediately after loading and how is it displayed?",
+    help: "General overview of gameplay:\nHow does the level start\nWhat information is displayed to the player before, during and immediately after loading and how is it displayed?",
     placeholder: "",
     value: ""
   },
@@ -207,7 +207,7 @@ var inGameHudAndMenusForm = [
   {
     name: "Menus Design",
     type: "textarea",
-    help: "How are the menu's, the server selection hub, the store, the mission selections visually represented and interacted with in game?",
+    help: "How are the menu's visually represented and interacted with in game for:\n- the server selection hub\n- the store\n- the mission selections",
     placeholder: "",
     value: ""
   }
@@ -217,35 +217,35 @@ var multiplayerForm = [
   {
     name: "Servers",
     type: "textarea",
-    help: "For the multiplayer how is the server setup handled?  Alternatively how do non hosts find servers and how are their paired with other players?",
+    help: "For the multiplayer how is the server setup handled?\nAlternatively how do non hosts find servers and how are their paired with other players?",
     placeholder: "",
     value: ""
   },
   {
     name: "First content",
     type: "textarea",
-    help: "What environments/levels are available to the player in the beginning?  What game options are available to players and the host before the game starts?",
+    help: "What environments/levels are available to the player in the beginning?\nWhat game options are available to players and the host before the game starts?",
     placeholder: "",
     value: ""
   },
   {
     name: "Options",
     type: "textarea",
-    help: "Describe in-game options available to both the host and the players.  How is the options screen displayed?",
+    help: "Describe in-game options available to both the host and the players.\nHow is the options screen displayed?",
     placeholder: "",
     value: ""
   },
   {
     name: "Match Ending",
     type: "textarea",
-    help: "What happens when the match is over?  What A/V event is displayed for the winners / losers?",
+    help: "What happens when the match is over?\nWhat A/V event is displayed for the winners / losers?",
     placeholder: "",
     value: ""
   },
   {
     name: "LeaderBoard",
     type: "textarea",
-    help: "How are the scores tabulated and describe the end-game / leaderboard screen",
+    help: "How are the scores tabulated and describe the end-game/leaderboard screen",
     placeholder: "",
     value: ""
   },
@@ -259,7 +259,7 @@ var multiplayerForm = [
   {
     name: "After quit match",
     type: "textarea",
-    help: "What happens immediately after the players exit the match? What screen are they taken to and what do they get from the match(currency, score, xp, etc etc)",
+    help: "What happens immediately after the players exit the match?\nWhat screen are they taken to and what do they get from the match(currency, score, xp, etc etc)",
     placeholder: "",
     value: ""
   }
@@ -279,7 +279,7 @@ var uiMainMenuForm = [
   {
     name: "Main Menu",
     type: "textarea",
-    help: "Describe the aesthetics and style of the menu, how it is displayed and how it is interacted with. Cite examples and post images of reference menus.",
+    help: "Describe the aesthetics and style of the menu, how it is displayed and how it is interacted with.\nCite examples and post images of reference menus.",
     placeholder: "",
     value: ""
   },
@@ -319,7 +319,7 @@ var inGameHudForm = [
   {
     name: "In-Game HUD",
     type: "textarea",
-    help: "Describe what information needs to be displayed and how it will be displayed.  Cite examples and shot sample shots of other games that contain similar styles or elements",
+    help: "Describe what information needs to be displayed and how it will be displayed.\nCite examples and shot sample shots of other games that contain similar styles or elements",
     placeholder: "",
     value: ""
   },
@@ -339,7 +339,7 @@ var levelSelectionForm = [
   {
     name: "Level Selection",
     type: "textarea",
-    help: "Describe the level selection and unlocking process.  How many levels does your average player start out with and how does he progress through the game?  How are the levels organized and grouped?  Are there distinct areas within the game and levels within those areas?  What motivates the player to unlock and go through the levels?",
+    help: "Describe the level selection and unlocking process:\n- How many levels does your average player start out with and how does he progress through the game?\n- How are the levels organized and grouped?\n- Are there distinct areas within the game and levels within those areas?\n- What motivates the player to unlock and go through the levels?",
     placeholder: "",
     value: ""
   },
@@ -349,7 +349,7 @@ var levelTypesForm = [
   {
     name: "Level Types",
     type: "textarea",
-    help: "If there are distinct sectors or groupings of levels(ie: desert, cities, river, outpost) how are they grouped and what groups are planned?  How does the player access/unlock them?  Each level type or sector should have a template that defines key characteristics that are common in all levels within this sector, not only visually but even strategically.  Describe each level type in detail and go over the characteristics that define them, both from an aesthetic and gameplay stand point.",
+    help: "If there are distinct sectors or groupings of levels(ie: desert, cities, river, outpost) how are they grouped and what groups are planned?\nHow does the player access/unlock them?\n\nEach level type or sector should have a template that defines key characteristics that are common in all levels within this sector, not only visually but even strategically.\nDescribe each level type in detail and go over the characteristics that define them, both from an aesthetic and gameplay stand point.",
     placeholder: "",
     value: ""
   },
@@ -359,7 +359,7 @@ var fullLevelListForm = [
   {
     name: "Full Level List",
     type: "textarea",
-    help: "A full rundown of the levels to be included in the game, organized by grouping.  Full details of each level should be contained within a separate level design document.",
+    help: "A full rundown of the levels to be included in the game, organized by grouping.\nFull details of each level should be contained within a separate level design document.",
     placeholder: "",
     value: ""
   },
@@ -414,7 +414,7 @@ var mechanicsForm = [
   {
     name: "Mechanics",
     type: "textarea",
-    help: "What kind of mechanics are to be employed in the game?  Go over movement, combat, health, equipment usage, special abilities and anything else that governs how the player plays the game.",
+    help: "What kind of mechanics are to be employed in the game?\nGo over movement, combat, health, equipment usage, special abilities and anything else that governs how the player plays the game.",
     placeholder: "",
     value: ""
   }
@@ -444,7 +444,7 @@ var winningTheMatchForm = [
   {
     name: "Winning the match",
     type: "textarea",
-    help: "Describe the conditions for winning the game. How long do matches/games last?  What determines when the game is over?",
+    help: "Describe the conditions for winning the game:\n- How long do matches/games last?\n- What determines when the game is over?",
     placeholder: "",
     value: ""
   }
@@ -464,7 +464,7 @@ var currencyForm = [
   {
     name: "Currency",
     type: "textarea",
-    help: "How much money do the players earn per match or per action? Are there modifiers applied to this amount for specific actions?",
+    help: "How much money do the players earn per match or per action?\nAre there modifiers applied to this amount for specific actions?",
     placeholder: "",
     value: ""
   }
@@ -474,7 +474,7 @@ var challengesOfImportanceForm = [
   {
     name: "Challenges of importance",
     type: "textarea",
-    help: "Are there certain challenges, events or levels within the game that are more important and challenging than others.  Challenges that represent large progress jumps and can unlock new items, abilities or areas",
+    help: "Are there certain challenges, events or levels within the game that are more important and challenging than others.\nChallenges that represent large progress jumps and can unlock new items, abilities or areas",
     placeholder: "",
     value: ""
   }
@@ -484,7 +484,7 @@ var missionsForm = [
   {
     name: "Missions",
     type: "textarea",
-    help: "Is there a mission or achievement system? How does it work?  What is the purpose of this system? Go over all achievements and rewards",
+    help: "Is there a mission or achievement system:\n- How does it work?\n- What is the purpose of this system?\nGo over all achievements and rewards",
     placeholder: "",
     value: ""
   }
@@ -494,7 +494,7 @@ var achievementsForm = [
   {
     name: "Achievements",
     type: "textarea",
-    help: "Is there a mission or achievement system? How does it work?  What is the purpose of this system? Go over all achievements and rewards",
+    help: "Is there a mission or achievement system?\n- How does it work?\n- What is the purpose of this system?\nGo over all achievements and rewards",
     placeholder: "",
     value: ""
   }
@@ -542,7 +542,7 @@ var charactersForm = [
   {
     name: "Characters",
     type: "textarea",
-    help: "A run down of all of the 2D, 3D, Animation and Audio work needed for the characters of the game.  Including back story, abilities and special traits",
+    help: "A run down of all of the 2D, 3D, Animation and Audio work needed for the characters of the game.\nIncluding back story, abilities and special traits",
     placeholder: "",
     value: ""
   }
@@ -602,7 +602,7 @@ var cinematicsForm = [
   {
     name: "Cinematics",
     type: "textarea",
-    help: "Any cinematics should be listed and described here. Further detail to be found in a beat sheet",
+    help: "Any cinematics should be listed and described here.\nFurther detail to be found in a beat sheet",
     placeholder: "",
     value: ""
   }
