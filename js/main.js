@@ -78,10 +78,10 @@ var audioStyleForm = [
     name: "Audio Style",
     type: "textarea",
     help: "Describe the Audio style of the game: \n\
-    -	Music style and Genre with References\n\
-    -	Audio Effects style\n\
-    -	The kind of characters that would have dialogue with references\n\
-    -	When dialogue or voice work would be used",
+-	Music style and Genre with References\n\
+-	Audio Effects style\n\
+-	The kind of characters that would have dialogue with references\n\
+-	When dialogue or voice work would be used",
     placeholder: "",
     value: ""
   }

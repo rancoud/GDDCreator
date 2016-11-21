@@ -47,12 +47,17 @@ var form = [
           el.appendChild(document.createTextNode(''));
         }
         else {
-          var lines = params.textNode.split("\n");
-          for (var i = 0; i < lines.length; i++) {
-            el.appendChild(document.createTextNode(lines[i]));
-            if(i+1 < lines.length) {
-              el.appendChild(document.createElement('br'));
+          if(params.type === 'span') {
+            var lines = params.textNode.split("\n");
+            for (var i = 0; i < lines.length; i++) {
+              el.appendChild(document.createTextNode(lines[i]));
+              if(i+1 < lines.length) {
+                el.appendChild(document.createElement('br'));
+              }
             }
+          }
+          else {
+            el.appendChild(document.createTextNode(params.textNode));
           }
         }
       }
