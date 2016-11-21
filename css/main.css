@@ -82,6 +82,9 @@
 .main .page-header {
   margin-top: 0;
 }
+.main textarea{
+  resize: vertical;
+}
 
 /*
  * Show first tab
